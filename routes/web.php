@@ -30,4 +30,5 @@ Route::post('updatestudents',[students::class,"updatestudents"])->name("student.
 Route::get('delete/{id}',[students::class, "deletestudents"])->name("student.delete");
 Route::post('addstudents',[students::class,"addstudents"])->name("student.add");
 
-Route::get('send-mail',[sample::class,"sendemail"]);
+Route::get('/sendemail', [sample::class,"Mail"]);
+Route::post('/sendemail/send', [sample::class,"send"]);

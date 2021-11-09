@@ -8,13 +8,18 @@ use Illuminate\Support\Facades\Mail;
 
 class sample extends Controller
 {
-    public function sendemail() {
+    public function Mail() {
+    return view('sample-mail');
+    }
+    public function send(Request $request)
+    {
         $detail = [
-            "title" => "this is sample mail from laravel",
-            "body" => "test mail from laravel"
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'body' => $request->body
         ];
-        Mail::to('UdayRamani2531@gmail.com')->send(new testmail($detail));
- 
-  echo "<h3>Email is Sent, please check your inbox.<h3>";
+
+     Mail::to($detail['email'])->send(new testmail($detail));
+     echo "<h2>'success', 'message sent successfully'</h2>";
     }
 }
